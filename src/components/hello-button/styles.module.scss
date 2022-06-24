@@ -1,0 +1,11 @@
+:host {
+    h4 {
+      color: gray;
+    }
+    button  {
+      color: var(--hello-button-color, #fff);
+      background-color: var(--hello-button-bgcolor, #000);
+      margin: 2px;
+    }
+  }
+  
