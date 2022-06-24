@@ -5,6 +5,7 @@ import { getUsername } from "~services/name-service";
 import scopedStyles from "./styles.module.scss";
 
 import("~components/hello-text").then(f => f.default());
+import("~components/hello-button").then(f => f.default());
 
 @customElement("test-page")
 export default class TestPage extends LitElement {
@@ -14,6 +15,7 @@ export default class TestPage extends LitElement {
         return html`
             <div class="container">
                 <hello-text sub="Welcome User">${this.username}</hello-text>
+                <hello-button label="Say Hello!"></hello-button>
             </div>
         `;
     }
