@@ -1,7 +1,8 @@
-const TerserPlugin = require("terser-webpack-plugin");
+// const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const FileManagerPlugin = require("filemanager-webpack-plugin");
 const { DuplicatesPlugin } = require("inspectpack/plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const { mergeWithRules } = require("webpack-merge");
 const common = require("./webpack.common");
 const paths = require("./webpack.paths");
@@ -56,15 +57,16 @@ const config = mergeWithRules({
         ],
 
         runtimeChunk: "single",
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendors",
-                    chunks: "all",
-                },
-            },
-        },
+        splitChunks: false,
+        // splitChunks: {
+        //     cacheGroups: {
+        //         vendor: {
+        //             test: /[\\/]node_modules[\\/]/,
+        //             name: "vendors",
+        //             chunks: "all",
+        //         },
+        //     },
+        // },
     },
 });
 

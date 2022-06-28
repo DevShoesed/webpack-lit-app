@@ -6,6 +6,7 @@ const SimpleProgressWebpackPlugin = require("simple-progress-webpack-plugin");
 const { DefinePlugin } = require("webpack");
 const router = require("./router");
 const paths = require("./webpack.paths");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 const pages = router.map(config => ({
     ...config,
@@ -53,6 +54,16 @@ const config = {
                 },
             },
         }),
+
+        new ModuleFederationPlugin({
+            name: "remoteWcApp",
+            library: { type: "var", name: "remoteWcApp" },
+            filename: "remoteWcApp.js",
+            exposes: {
+                "./helloButton": "./src/components/hello-button/index.ts",
+                "./TestPage": "./src/pages/test/index.ts",
+            },
+        }),
     ],
 
     module: {
@@ -62,7 +73,10 @@ const config = {
                 loader: "esbuild-loader",
                 options: {
                     loader: "ts",
-                    target: "es6",
+                    target: [
+                        "es6",
+                        "chrome64",
+                    ],
                 },
             }],
         }, {

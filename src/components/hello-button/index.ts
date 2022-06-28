@@ -4,6 +4,8 @@ import { componentStyles } from "~src/global";
 import { defineComponent } from "~utils/components";
 import scopedStyles from "./styles.module.scss";
 
+const elementName = "hello-button";
+
 export default (): void => defineComponent("hello-button", HelloButton);
 
 export interface HelloButtonClick {
@@ -38,3 +40,5 @@ export class HelloButton extends LitElement {
         this.dispatchEvent(event);
     }
 }
+
+export { elementName };
