@@ -22,9 +22,9 @@ const config = mergeWithRules({
 
     module: {
         rules: [{
-            test: /\.(ts|tsx)$/,
-            use: [{ loader: "minify-html-literals-loader" }],
-        }, {
+        //     test: /\.(ts|tsx)$/,
+        //     use: [{ loader: "minify-html-literals-loader" }],
+        // }, {
             test: /.(scss|css)$/,
             use: [{
                 loader: "lit-css-loader",
@@ -48,25 +48,24 @@ const config = mergeWithRules({
     optimization: {
         minimize: true,
 
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: { format: { comments: false } },
-                extractComments: false,
-            }),
-            new CssMinimizerPlugin(),
-        ],
+        // minimizer: [
+        //     new TerserPlugin({
+        //         terserOptions: { format: { comments: false } },
+        //         extractComments: false,
+        //     }),
+        //     new CssMinimizerPlugin(),
+        // ],
 
-        runtimeChunk: "single",
-        splitChunks: false,
-        // splitChunks: {
-        //     cacheGroups: {
-        //         vendor: {
-        //             test: /[\\/]node_modules[\\/]/,
-        //             name: "vendors",
-        //             chunks: "all",
-        //         },
-        //     },
-        // },
+        // runtimeChunk: "single",
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendors",
+                    chunks: "all",
+                },
+            },
+        },
     },
 });
 

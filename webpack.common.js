@@ -22,7 +22,7 @@ const config = {
 
     output: {
         path: `${paths.build}`,
-        filename: "bundles/[name].[contenthash].js",
+        // filename: "bundles/[name].[contenthash].js",
     },
 
     plugins: [
@@ -74,7 +74,7 @@ const config = {
                 options: {
                     loader: "ts",
                     target: [
-                        "es6",
+                        // "es6",
                         "chrome64",
                     ],
                 },
